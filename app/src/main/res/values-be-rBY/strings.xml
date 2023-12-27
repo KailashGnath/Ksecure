@@ -16,7 +16,8 @@
 
     <string name="item_already_added_warning">Гэты нумар ужо ёсць у спісе!</string>
 
-    <string name="sender_label">Нумар адпраўніка:</string>
+    <string name="sender_name_label">Імя адпраўніка:</string>
+    <string name="sender_num_label">Нумар адпраўніка:</string>
     <string name="pick_contact_button">Выбраць кантакт…</string>
     <string name="prefix_label">Прэфікс паведамлення адпраўніка:</string>
     <!-- <string name="dissable_requests_label">Dissable GPS requests from sender</string>

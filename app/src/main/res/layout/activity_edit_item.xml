@@ -18,13 +18,28 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/sender_input_layout"
+            android:id="@+id/sender_name_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/sender_label">
+            android:hint="@string/sender_name_label">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/sender_input"
+                android:id="@+id/sender_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="15" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sender_num_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sender_num_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sender_num_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"

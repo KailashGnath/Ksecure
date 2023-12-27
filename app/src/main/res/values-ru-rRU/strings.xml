@@ -16,7 +16,8 @@
 
     <string name="item_already_added_warning">Этот номер уже есть в списке!</string>
 
-    <string name="sender_label">Номер отправителя:</string>
+    <string name="sender_name_label">Имя отправителя:</string>
+    <string name="sender_num_label">Номер отправителя:</string>
     <string name="pick_contact_button">Выбрать контакт…</string>
     <string name="prefix_label">Префикс сообщения отправителя:</string>
     <!-- <string name="dissable_requests_label">Dissable GPS requests from sender</string>

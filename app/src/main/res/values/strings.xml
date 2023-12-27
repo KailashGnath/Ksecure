@@ -16,7 +16,8 @@
 
     <string name="item_already_added_warning">This number is already in the list!</string>
 
-    <string name="sender_label">Sender\'s number:</string>
+    <string name="sender_name_label">Sender\'s name:</string>
+    <string name="sender_num_label">Sender\'s number:</string>
     <string name="pick_contact_button">Choose a contact…</string>
     <string name="prefix_label">Sender\'s message prefix:</string>
     <string name="ignore_requests_label">Ignore GPS requests from sender</string>

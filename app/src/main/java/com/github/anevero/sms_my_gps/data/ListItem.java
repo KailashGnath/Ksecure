@@ -8,12 +8,14 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 public final class ListItem {
-  private final String sender;
+  private String senderName;
+  private final String senderNum;
   private String messagePrefix;
   private boolean ignoreRequests;
 
-  public ListItem(String sender, String messagePrefix, boolean ignoreRequests) {
-    this.sender = sender;
+  public ListItem(String senderName, String senderNum, String messagePrefix, boolean ignoreRequests) {
+    this.senderName = senderName;
+    this.senderNum = senderNum;
     this.messagePrefix = messagePrefix;
     this.ignoreRequests = ignoreRequests;
   }
@@ -21,11 +23,15 @@ public final class ListItem {
   @NonNull
   @Override
   public String toString() {
-    return getSender();
+    return getSenderName() + " (" + getSenderNum() + ")";
   }
 
-  public String getSender() {
-    return sender;
+  public String getSenderName() {
+    return senderName;
+  }
+
+  public String getSenderNum() {
+    return senderNum;
   }
 
   public String getMessagePrefix() {
@@ -34,6 +40,10 @@ public final class ListItem {
 
   public boolean getIgnoreRequests() {
     return ignoreRequests;
+  }
+
+  public void setSenderName(String senderName) {
+    this.senderName = senderName;
   }
 
   public void setMessagePrefix(String messagePrefix) {

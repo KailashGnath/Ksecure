@@ -25,7 +25,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class EditItemActivity extends AppCompatActivity {
-  private EditText senderInput;
+  private EditText senderNameInput;
+  private EditText senderNumInput;
   private EditText prefixInput;
   private TextInputLayout senderInputLayout;
   private TextInputLayout prefixInputLayout;
@@ -43,9 +44,10 @@ public class EditItemActivity extends AppCompatActivity {
     Objects.requireNonNull(getSupportActionBar())
            .setDisplayHomeAsUpEnabled(true);
 
-    senderInput = findViewById(R.id.sender_input);
+    senderNameInput = findViewById(R.id.sender_name_input);
+    senderNumInput = findViewById(R.id.sender_num_input);
     prefixInput = findViewById(R.id.prefix_input);
-    senderInputLayout = findViewById(R.id.sender_input_layout);
+    senderInputLayout = findViewById(R.id.sender_num_input_layout);
     prefixInputLayout = findViewById(R.id.prefix_input_layout);
     ignoreCheckBox = findViewById(R.id.ignore_requests_checkbox);
     pickContactButton = findViewById(R.id.pick_contact_button);
@@ -66,20 +68,22 @@ public class EditItemActivity extends AppCompatActivity {
       deleteButton.setText(R.string.cancel_button);
     } else {
       // We're editing existing item and must fill the fields with current info.
-      String sender = getIntent().getStringExtra(Constants.SENDER_KEY);
+      String senderName = getIntent().getStringExtra(Constants.SENDER_NAME_KEY);
+      String senderNum = getIntent().getStringExtra(Constants.SENDER_NUM_KEY);
       String prefix = getIntent().getStringExtra(Constants.MESSAGE_KEY);
       boolean ignore = getIntent().getBooleanExtra(Constants.IGNORE_KEY, false);
 
-      senderInput.setText(sender);
+      senderNameInput.setText(senderName);
+      senderNumInput.setText(senderNum);
       prefixInput.setText(prefix);
       ignoreCheckBox.setChecked(ignore);
 
-      // Changing the number is not allowed.
-      senderInput.setEnabled(false);
+      // Only changing the prefix or the name is allowed.
+      senderNumInput.setEnabled(false);
       pickContactButton.setEnabled(false);
     }
 
-    senderInput.setOnFocusChangeListener((v, hasFocus) -> {
+    senderNumInput.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus) {
         senderInputLayout.setError(null);
       }
@@ -100,9 +104,9 @@ public class EditItemActivity extends AppCompatActivity {
     });
 
     saveButton.setOnClickListener(v -> {
-      if (senderInput.getText().toString().isEmpty() ||
+      if (senderNumInput.getText().toString().isEmpty() ||
           prefixInput.getText().toString().isEmpty()) {
-        if (senderInput.getText().toString().isEmpty()) {
+        if (senderNumInput.getText().toString().isEmpty()) {
           senderInputLayout.setError(getString(R.string.field_empty_label));
         }
         if (prefixInput.getText().toString().isEmpty()) {
@@ -114,8 +118,10 @@ public class EditItemActivity extends AppCompatActivity {
       Intent result = new Intent(this, MainActivity.class);
       result.putExtra(Constants.ITEM_ID_KEY, getIntent().getIntExtra(
               Constants.ITEM_ID_KEY, -1));
-      result.putExtra(Constants.SENDER_KEY,
-                      senderInput.getText().toString().trim());
+      result.putExtra(Constants.SENDER_NAME_KEY,
+                      senderNameInput.getText().toString().trim());
+      result.putExtra(Constants.SENDER_NUM_KEY,
+                      senderNumInput.getText().toString().trim());
       result.putExtra(Constants.MESSAGE_KEY,
                       prefixInput.getText().toString().trim());
       result.putExtra(Constants.IGNORE_KEY,
@@ -186,19 +192,29 @@ public class EditItemActivity extends AppCompatActivity {
     }
 
     String[] projection = new String[]{
-            ContactsContract.CommonDataKinds.Phone.NUMBER};
+            ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY};
     Cursor cursor = getContentResolver().query(
             contactUri, projection, null, null, null);
     if (cursor == null) {
       return;
     }
 
+int rows = cursor.getCount();
+String columnNames[] = cursor.getColumnNames();
+
     if (cursor.moveToFirst()) {
-      int numberIndex = cursor.getColumnIndex(
-              ContactsContract.CommonDataKinds.Phone.NUMBER);
+java.util.ArrayList<String> columnValues = new java.util.ArrayList<String>();
+for (int i = 0; i < columnNames.length; ++i) {
+    columnValues.add(cursor.getString(i));
+}
+
+      int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
       String number = cursor.getString(numberIndex);
       number = number.replaceAll("[^+0-9]", "");
-      senderInput.setText(number);
+      senderNumInput.setText(number);
+
+      numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY);
+      senderNameInput.setText(cursor.getString(numberIndex));
     }
 
     cursor.close();

@@ -169,12 +169,14 @@ public class MainActivity extends AppCompatActivity
     Intent intent = new Intent(this, EditItemActivity.class);
     intent.putExtra(Constants.ITEM_ID_KEY, itemId);
     if (needToAdd) {
-      intent.putExtra(Constants.SENDER_KEY, "");
+      intent.putExtra(Constants.SENDER_NAME_KEY, "");
+      intent.putExtra(Constants.SENDER_NUM_KEY, "");
       intent.putExtra(Constants.MESSAGE_KEY, "");
       intent.putExtra(Constants.IGNORE_KEY, "false");
     } else {
       ListItem item = listItems.get(itemId);
-      intent.putExtra(Constants.SENDER_KEY, item.getSender());
+      intent.putExtra(Constants.SENDER_NAME_KEY, item.getSenderName());
+      intent.putExtra(Constants.SENDER_NUM_KEY, item.getSenderNum());
       intent.putExtra(Constants.MESSAGE_KEY, item.getMessagePrefix());
       intent.putExtra(Constants.IGNORE_KEY, item.getIgnoreRequests());
     }
@@ -201,21 +203,22 @@ public class MainActivity extends AppCompatActivity
       }
       listItems.remove(itemId);
     } else {
-      String sender = data.getStringExtra(Constants.SENDER_KEY);
+      String senderName = data.getStringExtra(Constants.SENDER_NAME_KEY);
+      String senderNum = data.getStringExtra(Constants.SENDER_NUM_KEY);
       String message = data.getStringExtra(Constants.MESSAGE_KEY);
       boolean ignore = data.getBooleanExtra(Constants.IGNORE_KEY, false);
 
       if (itemId == -1) {
-        if (ListItem.getMatch(listItems, sender) != null) {
+        if (ListItem.getMatch(listItems, senderNum) != null) {
           Snackbar.make(findViewById(android.R.id.content),
                         R.string.item_already_added_warning,
                         Snackbar.LENGTH_LONG).show();
           return;
         }
-        listItems.add(new ListItem(sender, message, ignore));
-        itemId = listItems.size() - 1;
+        listItems.add(new ListItem(senderName, senderNum, message, ignore));
       } else {
         ListItem item = listItems.get(itemId);
+        item.setSenderName(senderName);
         item.setMessagePrefix(message);
         item.setIgnoreRequests(ignore);
       }
