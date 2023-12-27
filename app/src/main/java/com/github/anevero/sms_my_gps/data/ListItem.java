@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public final class ListItem {
   private String senderName;
-  private final String senderNum;
+  private final String sender;
   private String messagePrefix;
   private boolean ignoreRequests;
 
   public ListItem(String senderName, String senderNum, String messagePrefix, boolean ignoreRequests) {
     this.senderName = senderName;
-    this.senderNum = senderNum;
+    this.sender = senderNum;
     this.messagePrefix = messagePrefix;
     this.ignoreRequests = ignoreRequests;
   }
@@ -23,7 +23,11 @@ public final class ListItem {
   @NonNull
   @Override
   public String toString() {
-    return getSenderName() + " (" + getSenderNum() + ")";
+    if (getSenderName() != null) {
+      return getSenderName() + " (" + getSenderNum() + ")";
+    } else {
+      return getSenderNum();
+    }
   }
 
   public String getSenderName() {
@@ -31,7 +35,7 @@ public final class ListItem {
   }
 
   public String getSenderNum() {
-    return senderNum;
+    return sender;
   }
 
   public String getMessagePrefix() {

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.CheckBox;
@@ -73,7 +74,12 @@ public class EditItemActivity extends AppCompatActivity {
       String prefix = getIntent().getStringExtra(Constants.MESSAGE_KEY);
       boolean ignore = getIntent().getBooleanExtra(Constants.IGNORE_KEY, false);
 
-      senderNameInput.setText(senderName);
+      if (senderName != null) {
+        // We guard against setting to null in case we're importing
+        // ListItems from legacy versions which don't include the sender
+        // name.
+        senderNameInput.setText(senderName);
+      }
       senderNumInput.setText(senderNum);
       prefixInput.setText(prefix);
       ignoreCheckBox.setChecked(ignore);
@@ -81,6 +87,7 @@ public class EditItemActivity extends AppCompatActivity {
       // Only changing the prefix or the name is allowed.
       senderNumInput.setEnabled(false);
       pickContactButton.setEnabled(false);
+      pickContactButton.setVisibility(View.GONE);
     }
 
     senderNumInput.setOnFocusChangeListener((v, hasFocus) -> {

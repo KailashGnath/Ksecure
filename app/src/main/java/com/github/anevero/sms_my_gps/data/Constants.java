@@ -4,7 +4,7 @@ public class Constants {
   // Keys in intents used to forward data between activities.
   public static final String ITEM_ID_KEY = "item_id";
   public static final String SENDER_NAME_KEY = "sender_name";
-  public static final String SENDER_NUM_KEY = "sender_num";
+  public static final String SENDER_NUM_KEY = "sender";
   public static final String MESSAGE_KEY = "message";
   public static final String IGNORE_KEY = "ignore";
 
