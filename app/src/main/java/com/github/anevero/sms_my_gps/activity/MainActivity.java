@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity
   public void requestLocation(ListItem item) {
     // Send SMS
     SmsManager smsManager = getSystemService(SmsManager.class);
-    smsManager.sendTextMessage(item.getSender(), null, item.getMessagePrefix(), null, null);
+    smsManager.sendTextMessage(item.getSenderNum(), null, item.getMessagePrefix(), null, null);
 
     // Notify user that SMS sent
     Toast.makeText(this, getString(R.string.location_request) + " " + item, Toast.LENGTH_LONG).show();
