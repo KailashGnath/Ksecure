@@ -4,7 +4,6 @@ project.ext {
     minSdkVersion = 23
     targetSdkVersion = 30
     compileSdkVersion = 30
-    buildToolsVersion = '30.0.3'
     javaVersion = JavaVersion.VERSION_1_8
     applicationId = 'com.github.anevero.sms_my_gps'
 }

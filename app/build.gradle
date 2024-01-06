@@ -1,20 +1,19 @@
 apply plugin: 'com.android.application'
 
 apply from: '../constants.gradle'
-apply from: '../signing_config.gradle'
+//apply from: '../signing_config.gradle'
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('../signing_key.jks')
-            storePassword project.ext.storePassword
-            keyAlias project.ext.keyAlias
-            keyPassword project.ext.keyPassword
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file('../signing_key.jks')
+//            storePassword project.ext.storePassword
+//            keyAlias project.ext.keyAlias
+//            keyPassword project.ext.keyPassword
+//        }
+//    }
 
     compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
 
     compileOptions {
         sourceCompatibility project.ext.javaVersion
@@ -28,7 +27,7 @@ android {
         applicationId project.ext.applicationId
         versionName project.ext.releaseVersion
         versionCode project.ext.releaseVersionCode
-        signingConfig signingConfigs.release
+//        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -48,6 +47,7 @@ android {
     lintOptions {
         abortOnError true
     }
+    namespace 'com.github.anevero.sms_my_gps'
 }
 
 dependencies {
