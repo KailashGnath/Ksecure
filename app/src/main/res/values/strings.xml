@@ -11,12 +11,16 @@
     <string name="enable_service_switch">Enable service</string>
     <string name="service_running">Service is running</string>
     <string name="service_channel">Service channel</string>
+    <string name="ignore_request_icon">Ignore Location Requests from this number</string>
+    <string name="location_request">Sent a location request to </string>
 
     <string name="item_already_added_warning">This number is already in the list!</string>
 
     <string name="sender_label">Sender\'s number:</string>
     <string name="pick_contact_button">Choose a contact…</string>
-    <string name="message_label">Sender\'s message prefix:</string>
+    <string name="prefix_label">Sender\'s message prefix:</string>
+    <string name="ignore_requests_label">Ignore GPS requests from sender</string>
+    <string name="location_request_label">Send request for location</string>
     <string name="delete_button">Delete</string>
     <string name="cancel_button">Cancel</string>
     <string name="save_button">Save</string>

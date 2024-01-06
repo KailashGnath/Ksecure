@@ -5,6 +5,7 @@ public class Constants {
   public static final String ITEM_ID_KEY = "item_id";
   public static final String SENDER_KEY = "sender";
   public static final String MESSAGE_KEY = "message";
+  public static final String IGNORE_KEY = "ignore";
 
   // Activities request codes.
   public static final int EDIT_ITEM_REQUEST_CODE = 520;

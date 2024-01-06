@@ -10,10 +10,12 @@ import java.util.ArrayList;
 public final class ListItem {
   private final String sender;
   private String messagePrefix;
+  private boolean ignoreRequests;
 
-  public ListItem(String sender, String messagePrefix) {
+  public ListItem(String sender, String messagePrefix, boolean ignoreRequests) {
     this.sender = sender;
     this.messagePrefix = messagePrefix;
+    this.ignoreRequests = ignoreRequests;
   }
 
   @NonNull
@@ -30,8 +32,16 @@ public final class ListItem {
     return messagePrefix;
   }
 
+  public boolean getIgnoreRequests() {
+    return ignoreRequests;
+  }
+
   public void setMessagePrefix(String messagePrefix) {
     this.messagePrefix = messagePrefix;
+  }
+
+  public void setIgnoreRequests(boolean ignoreRequests) {
+    this.ignoreRequests = ignoreRequests;
   }
 
   public static ArrayList<ListItem> fromJson(String json) {
@@ -70,7 +80,8 @@ public final class ListItem {
   public static ListItem getMatch(ArrayList<ListItem> listItems,
                                   String sender, String message) {
     for (ListItem item : listItems) {
-      if (senderMatches(item, sender) &&
+      if (!item.getIgnoreRequests() &&
+          senderMatches(item, sender) &&
           message.startsWith(item.messagePrefix)) {
         return item;
       }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,7 +27,7 @@
                 android:id="@+id/sender_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="phone"
                 android:maxLength="15" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -39,19 +40,25 @@
             android:text="@string/pick_contact_button" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/message_input_layout"
+            android:id="@+id/prefix_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/message_label"
+            android:hint="@string/prefix_label"
             android:paddingTop="24dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/message_input"
+                android:id="@+id/prefix_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/ignore_requests_checkbox"
+            android:hint="@string/ignore_requests_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

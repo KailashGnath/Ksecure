@@ -11,12 +11,16 @@
     <string name="enable_service_switch">Активировать сервис</string>
     <string name="service_running">Сервис запущен</string>
     <string name="service_channel">Канал сервиса</string>
+    <!-- <string name="ignore_request_icon">Ignore Location Requests from this number</string>
+    <string name="location_request">Sent a location request to </string> -->
 
     <string name="item_already_added_warning">Этот номер уже есть в списке!</string>
 
     <string name="sender_label">Номер отправителя:</string>
     <string name="pick_contact_button">Выбрать контакт…</string>
-    <string name="message_label">Префикс сообщения отправителя:</string>
+    <string name="prefix_label">Префикс сообщения отправителя:</string>
+    <!-- <string name="dissable_requests_label">Dissable GPS requests from sender</string>
+    <string name="location_request_label">Send request for location</string> -->
     <string name="delete_button">Удалить</string>
     <string name="cancel_button">Закрыть</string>
     <string name="save_button">Сохранить</string>
