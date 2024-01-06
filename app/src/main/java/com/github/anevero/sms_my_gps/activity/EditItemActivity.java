@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +26,10 @@ import java.util.Objects;
 
 public class EditItemActivity extends AppCompatActivity {
   private EditText senderInput;
-  private EditText messageInput;
+  private EditText prefixInput;
   private TextInputLayout senderInputLayout;
-  private TextInputLayout messageInputLayout;
+  private TextInputLayout prefixInputLayout;
+  private CheckBox ignoreCheckBox;
 
   private Button pickContactButton;
   private Button deleteButton;
@@ -42,9 +44,10 @@ public class EditItemActivity extends AppCompatActivity {
            .setDisplayHomeAsUpEnabled(true);
 
     senderInput = findViewById(R.id.sender_input);
-    messageInput = findViewById(R.id.message_input);
+    prefixInput = findViewById(R.id.prefix_input);
     senderInputLayout = findViewById(R.id.sender_input_layout);
-    messageInputLayout = findViewById(R.id.message_input_layout);
+    prefixInputLayout = findViewById(R.id.prefix_input_layout);
+    ignoreCheckBox = findViewById(R.id.ignore_requests_checkbox);
     pickContactButton = findViewById(R.id.pick_contact_button);
 
     deleteButton = findViewById(R.id.delete_button);
@@ -64,12 +67,14 @@ public class EditItemActivity extends AppCompatActivity {
     } else {
       // We're editing existing item and must fill the fields with current info.
       String sender = getIntent().getStringExtra(Constants.SENDER_KEY);
-      String message = getIntent().getStringExtra(Constants.MESSAGE_KEY);
+      String prefix = getIntent().getStringExtra(Constants.MESSAGE_KEY);
+      boolean ignore = getIntent().getBooleanExtra(Constants.IGNORE_KEY, false);
 
       senderInput.setText(sender);
-      messageInput.setText(message);
+      prefixInput.setText(prefix);
+      ignoreCheckBox.setChecked(ignore);
 
-      // Only changing the prefix is allowed.
+      // Changing the number is not allowed.
       senderInput.setEnabled(false);
       pickContactButton.setEnabled(false);
     }
@@ -80,9 +85,9 @@ public class EditItemActivity extends AppCompatActivity {
       }
     });
 
-    messageInput.setOnFocusChangeListener((v, hasFocus) -> {
+    prefixInput.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus) {
-        messageInputLayout.setError(null);
+        prefixInputLayout.setError(null);
       }
     });
 
@@ -96,12 +101,12 @@ public class EditItemActivity extends AppCompatActivity {
 
     saveButton.setOnClickListener(v -> {
       if (senderInput.getText().toString().isEmpty() ||
-          messageInput.getText().toString().isEmpty()) {
+          prefixInput.getText().toString().isEmpty()) {
         if (senderInput.getText().toString().isEmpty()) {
           senderInputLayout.setError(getString(R.string.field_empty_label));
         }
-        if (messageInput.getText().toString().isEmpty()) {
-          messageInputLayout.setError(getString(R.string.field_empty_label));
+        if (prefixInput.getText().toString().isEmpty()) {
+          prefixInputLayout.setError(getString(R.string.field_empty_label));
         }
         return;
       }
@@ -112,7 +117,9 @@ public class EditItemActivity extends AppCompatActivity {
       result.putExtra(Constants.SENDER_KEY,
                       senderInput.getText().toString().trim());
       result.putExtra(Constants.MESSAGE_KEY,
-                      messageInput.getText().toString().trim());
+                      prefixInput.getText().toString().trim());
+      result.putExtra(Constants.IGNORE_KEY,
+                      ignoreCheckBox.isChecked());
       setResult(Constants.EDIT_ITEM_ADD_RESULT_CODE, result);
       finish();
     });
@@ -190,7 +197,7 @@ public class EditItemActivity extends AppCompatActivity {
       int numberIndex = cursor.getColumnIndex(
               ContactsContract.CommonDataKinds.Phone.NUMBER);
       String number = cursor.getString(numberIndex);
-      number = number.replaceAll("[^0-9]", "");
+      number = number.replaceAll("[^+0-9]", "");
       senderInput.setText(number);
     }
 

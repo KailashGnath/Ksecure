@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.telephony.SmsManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 import com.github.anevero.sms_my_gps.R;
+import com.github.anevero.sms_my_gps.adapters.ListItemAdapter;
 import com.github.anevero.sms_my_gps.data.Constants;
 import com.github.anevero.sms_my_gps.data.ListItem;
 import com.github.anevero.sms_my_gps.data.Preferences;
@@ -26,7 +29,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+                          implements ListItemAdapter.ListManager {
   private SwitchCompat enableServiceSwitch;
 
   private ListView listView;
@@ -58,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     listView = findViewById(R.id.list_view);
     listItems = Preferences.getListItems(MainActivity.this);
-    listAdapter = new ArrayAdapter<>(MainActivity.this,
-                                     android.R.layout.simple_list_item_1,
-                                     listItems);
+    listAdapter = new ListItemAdapter(listItems, this, getApplicationContext());
     listView.setAdapter(listAdapter);
     listView.setOnItemClickListener((parent, view, position, id) -> {
       startEditActivity(position);
@@ -169,10 +171,12 @@ public class MainActivity extends AppCompatActivity {
     if (needToAdd) {
       intent.putExtra(Constants.SENDER_KEY, "");
       intent.putExtra(Constants.MESSAGE_KEY, "");
+      intent.putExtra(Constants.IGNORE_KEY, "false");
     } else {
       ListItem item = listItems.get(itemId);
       intent.putExtra(Constants.SENDER_KEY, item.getSender());
       intent.putExtra(Constants.MESSAGE_KEY, item.getMessagePrefix());
+      intent.putExtra(Constants.IGNORE_KEY, item.getIgnoreRequests());
     }
 
     startActivityForResult(intent, Constants.EDIT_ITEM_REQUEST_CODE);
@@ -199,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
     } else {
       String sender = data.getStringExtra(Constants.SENDER_KEY);
       String message = data.getStringExtra(Constants.MESSAGE_KEY);
+      boolean ignore = data.getBooleanExtra(Constants.IGNORE_KEY, false);
 
       if (itemId == -1) {
         if (ListItem.getMatch(listItems, sender) != null) {
@@ -207,12 +212,13 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.LENGTH_LONG).show();
           return;
         }
-        listItems.add(new ListItem(sender, ""));
+        listItems.add(new ListItem(sender, message, ignore));
         itemId = listItems.size() - 1;
+      } else {
+        ListItem item = listItems.get(itemId);
+        item.setMessagePrefix(message);
+        item.setIgnoreRequests(ignore);
       }
-
-      ListItem item = listItems.get(itemId);
-      item.setMessagePrefix(message);
     }
 
     listAdapter.notifyDataSetChanged();
@@ -225,5 +231,21 @@ public class MainActivity extends AppCompatActivity {
 
   private void startSettingsActivity() {
     startActivity(new Intent(this, SettingsActivity.class));
+  }
+
+  // ListManager implementation
+  @Override
+  public void requestLocation(ListItem item) {
+    // Send SMS
+    SmsManager smsManager = getSystemService(SmsManager.class);
+    smsManager.sendTextMessage(item.getSender(), null, item.getMessagePrefix(), null, null);
+
+    // Notify user that SMS sent
+    Toast.makeText(this, getString(R.string.location_request) + " " + item, Toast.LENGTH_LONG).show();
+  }
+
+  @Override
+  public void editItem(int position) {
+    startEditActivity(position);
   }
 }

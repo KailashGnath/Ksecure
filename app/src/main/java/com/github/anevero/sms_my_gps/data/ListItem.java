@@ -10,10 +10,12 @@ import java.util.ArrayList;
 public final class ListItem {
   private final String sender;
   private String messagePrefix;
+  private boolean ignoreRequests;
 
-  public ListItem(String sender, String messagePrefix) {
+  public ListItem(String sender, String messagePrefix, boolean ignoreRequests) {
     this.sender = sender;
     this.messagePrefix = messagePrefix;
+    this.ignoreRequests = ignoreRequests;
   }
 
   @NonNull
@@ -30,8 +32,16 @@ public final class ListItem {
     return messagePrefix;
   }
 
+  public boolean getIgnoreRequests() {
+    return ignoreRequests;
+  }
+
   public void setMessagePrefix(String messagePrefix) {
     this.messagePrefix = messagePrefix;
+  }
+
+  public void setIgnoreRequests(boolean ignoreRequests) {
+    this.ignoreRequests = ignoreRequests;
   }
 
   public static ArrayList<ListItem> fromJson(String json) {
@@ -46,10 +56,20 @@ public final class ListItem {
     return (new Gson()).toJson(arrayList);
   }
 
+  private static boolean senderMatches(ListItem item, String sender) {
+    if (item.sender.charAt(0) == '0') {
+      // Ignore the leading '0' to allow matching "sender", which is
+      // supplied with the appropriate country code.
+      return sender.endsWith(item.sender.substring(1));
+    } else {
+      return sender.endsWith(item.sender);
+    }
+  }
+
   public static ListItem getMatch(ArrayList<ListItem> listItems,
                                   String sender) {
     for (ListItem item : listItems) {
-      if (sender.endsWith(item.sender)) {
+      if (senderMatches(item, sender)) {
         return item;
       }
     }
@@ -60,7 +80,8 @@ public final class ListItem {
   public static ListItem getMatch(ArrayList<ListItem> listItems,
                                   String sender, String message) {
     for (ListItem item : listItems) {
-      if (sender.endsWith(item.sender) &&
+      if (!item.getIgnoreRequests() &&
+          senderMatches(item, sender) &&
           message.startsWith(item.messagePrefix)) {
         return item;
       }

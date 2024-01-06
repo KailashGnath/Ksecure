@@ -11,12 +11,16 @@
     <string name="enable_service_switch">Уключыць сэрвіс</string>
     <string name="service_running">Сервіс запушчаны</string>
     <string name="service_channel">Канал сэрвісу</string>
+    <!-- <string name="ignore_request_icon">Ignore Location Requests from this number</string>
+    <string name="location_request">Sent a location request to </string> -->
 
     <string name="item_already_added_warning">Гэты нумар ужо ёсць у спісе!</string>
 
     <string name="sender_label">Нумар адпраўніка:</string>
     <string name="pick_contact_button">Выбраць кантакт…</string>
-    <string name="message_label">Прэфікс паведамлення адпраўніка:</string>
+    <string name="prefix_label">Прэфікс паведамлення адпраўніка:</string>
+    <!-- <string name="dissable_requests_label">Dissable GPS requests from sender</string>
+    <string name="location_request_label">Send request for location</string> -->
     <string name="delete_button">Выдаліць</string>
     <string name="cancel_button">Зачыніць</string>
     <string name="save_button">Захаваць</string>
