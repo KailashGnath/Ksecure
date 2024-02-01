@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SMS my GPS</string>
-    <string name="app_version">Version 3.4.8 (37)</string>
+    <string name="app_version">Version 3.5.0 (38)</string>
 
     <string name="add_item">Add item</string>
     <string name="edit_item">Edit item</string>
@@ -15,6 +15,7 @@
     <string name="location_request">Sent a location request to </string>
 
     <string name="item_already_added_warning">This number is already in the list!</string>
+    <string name="number_missing">Your contacts provider didn\'t return a number. Either use a different contacts provider or manually enter the contact\'s details.</string>
 
     <string name="sender_name_label">Sender\'s name:</string>
     <string name="sender_num_label">Sender\'s number:</string>
@@ -27,8 +28,8 @@
     <string name="save_button">Save</string>
     <string name="field_empty_label">This field can\'t be empty</string>
 
-    <string name="version_history_label"><a href="https://github.com/anevero/sms_my_gps/releases">Version history</a></string>
-    <string name="source_code_label"><a href="https://github.com/anevero/sms_my_gps">Source code</a> (GPL 2.0 license)</string>
+    <string name="version_history_label"><a href="https://github.com/fredx100/sms_my_gps/releases">Version history</a></string>
+    <string name="source_code_label"><a href="https://github.com/fredx100/sms_my_gps">Source code</a> (GPL 2.0 license)</string>
     <string name="based_on_label">Based on <a href="https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS">Warren Bank\'s project</a></string>
     <string name="faq_label">Frequently asked questions</string>
     <string name="how_to_label">How to use this app?</string>

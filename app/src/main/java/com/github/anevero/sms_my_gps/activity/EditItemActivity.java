@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,10 +34,6 @@ public class EditItemActivity extends AppCompatActivity {
   private TextInputLayout prefixInputLayout;
   private CheckBox ignoreCheckBox;
 
-  private Button pickContactButton;
-  private Button deleteButton;
-  private Button saveButton;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     AppCompatDelegate.setDefaultNightMode(Preferences.getTheme(this));
@@ -44,6 +41,9 @@ public class EditItemActivity extends AppCompatActivity {
     setContentView(R.layout.activity_edit_item);
     Objects.requireNonNull(getSupportActionBar())
            .setDisplayHomeAsUpEnabled(true);
+    Button pickContactButton;
+    Button deleteButton;
+    Button saveButton;
 
     senderNameInput = findViewById(R.id.sender_name_input);
     senderNumInput = findViewById(R.id.sender_num_input);
@@ -200,28 +200,30 @@ public class EditItemActivity extends AppCompatActivity {
 
     String[] projection = new String[]{
             ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY};
-    Cursor cursor = getContentResolver().query(
-            contactUri, projection, null, null, null);
+    Cursor cursor;
+    try {
+      cursor = getContentResolver().query(contactUri, projection, null, null, null);
+    } catch (RuntimeException exception) {
+      Toast.makeText(this, getString(R.string.number_missing), Toast.LENGTH_LONG).show();
+      return;
+    }
+
     if (cursor == null) {
       return;
     }
 
-int rows = cursor.getCount();
-String columnNames[] = cursor.getColumnNames();
-
     if (cursor.moveToFirst()) {
-java.util.ArrayList<String> columnValues = new java.util.ArrayList<String>();
-for (int i = 0; i < columnNames.length; ++i) {
-    columnValues.add(cursor.getString(i));
-}
-
       int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-      String number = cursor.getString(numberIndex);
-      number = number.replaceAll("[^+0-9]", "");
-      senderNumInput.setText(number);
+      if (numberIndex != -1) {
+        String number = cursor.getString(numberIndex);
+        number = number.replaceAll("[^+0-9]", "");
+        senderNumInput.setText(number);
 
-      numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY);
-      senderNameInput.setText(cursor.getString(numberIndex));
+        numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY);
+        if (numberIndex != -1) {
+          senderNameInput.setText(cursor.getString(numberIndex));
+        }
+      }
     }
 
     cursor.close();

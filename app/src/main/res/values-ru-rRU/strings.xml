@@ -15,6 +15,7 @@
     <string name="location_request">Sent a location request to </string> -->
 
     <string name="item_already_added_warning">Этот номер уже есть в списке!</string>
+    <!-- <string name="number_missing">Your contacts provider didn\'t return a number. Either use a different contacts provider or manually enter the contact\'s details.</string> -->
 
     <string name="sender_name_label">Имя отправителя:</string>
     <string name="sender_num_label">Номер отправителя:</string>
@@ -27,8 +28,8 @@
     <string name="save_button">Сохранить</string>
     <string name="field_empty_label">Это поле не может быть пустым</string>
 
-    <string name="version_history_label"><a href="https://github.com/anevero/sms_my_gps/releases">История версий</a></string>
-    <string name="source_code_label"><a href="https://github.com/anevero/sms_my_gps">Исходный код</a> (лицензия GPL 2.0)</string>
+    <string name="version_history_label"><a href="https://github.com/fredx100/sms_my_gps/releases">История версий</a></string>
+    <string name="source_code_label"><a href="https://github.com/fredx100/sms_my_gps">Исходный код</a> (лицензия GPL 2.0)</string>
     <string name="based_on_label">На основе <a href="https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS">проекта Уоррена Бэнка</a></string>
     <string name="faq_label">Частые вопросы</string>
     <string name="how_to_label">Как работать с этим приложением?</string>
