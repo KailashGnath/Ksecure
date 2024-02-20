@@ -1,16 +1,19 @@
 # SMS my GPS
 
-[![GitHub Actions Status](https://github.com/anevero/sms_my_gps/workflows/build/badge.svg?branch=master)](https://github.com/anevero/sms_my_gps/actions)
+[![GitHub Actions Status](https://github.com/fredx100/sms_my_gps/workflows/build/badge.svg?branch=master)](https://github.com/fredx100/sms_my_gps/actions)
 
-This Android app is designed to automatically send SMS with your location as a
-reply to SMS with a specific prefix from a specific number. All you need is
-just to add necessary numbers and prefixes to the app, and it will
-automatically send a message with your coordinates after receiving an
-appropriate SMS.
+This android app is designed to automatically send your location in
+response to an SMS from a permitted phone number with a pre-agreed prefix.
+
+To set this up simple add the permitted numbers with the corrosponding
+pre-agreed prefix to the app. The app will then send an SMS containing
+your coordinates in response to an appropriate SMS message.
 
 ![SMS my GPS](https://user-images.githubusercontent.com/47552815/97208941-c3c27380-17cc-11eb-8185-6e24a9dc7643.png)
 
-This fork is based on [Warren Bank's project](https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS).
+This fork is based on [Anevero's
+project](https://github.com/anevero/sms_my_gps) which is, in turn, based
+on [Warren Bank's project](https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS).
 
 ## Features
 
@@ -37,23 +40,8 @@ need some time to determine the real location.
 
 ## Changes in the fork
 
-- App's interface has been completely redesigned to comply with the Material
-design guidelines. Night theme is also supported now.
-- A lot of changes in the app's architecture. The overwhelming majority of the
-code has been rewritten. New activities have been implemented with new
-different features.
-- Choosing the location provider (between Google Location Services, system GPS
-provider, system network provider, last known location from them) feature has
-been added.
-- Choosing the location accuracy and maximum requests number features have been
-added.
-- All the logic connected with listening to SMS broadcasts and sending the
-location has been moved to the foreground service to ensure that the
-application works properly in the background mode.
-- Different compatibility changes. For example, the broadcast receiver is now
-registered at runtime, not in the manifest, to meet Android Oreo (and later)
-requirements for implicit receivers.
-- Ability to send and receive raw data SMS has been removed (it didn't work
-correctly at least on some devices).
-- Minimum SDK level is now 23 (Android 6.0 Marshmallow). 
-- A lot of refactoring changes.
+- Allowed sending a location-request SMS from within the app. This is
+  necessay on phones which use RCS messaging by default, as in this case
+  it is awkward to send an SMS.
+- Allowing stored numbers to optionally have names recorded. This is
+  simply to ease number management.
