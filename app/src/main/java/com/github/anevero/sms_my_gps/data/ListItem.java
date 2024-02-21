@@ -1,11 +1,17 @@
 package com.github.anevero.sms_my_gps.data;
 
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.TelephonyManager;
+
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
 
 public final class ListItem {
   private String senderName;
@@ -70,20 +76,31 @@ public final class ListItem {
     return (new Gson()).toJson(arrayList);
   }
 
-  private static boolean senderMatches(ListItem item, String sender) {
-    if (item.sender.charAt(0) == '0') {
-      // Ignore the leading '0' to allow matching "sender", which is
-      // supplied with the appropriate country code.
-      return sender.endsWith(item.sender.substring(1));
+  private static boolean senderMatches(ListItem item, String sender, Context context) {
+    if (item.sender.charAt(0) == '+') {
+      // item.sender already has a country code prepended, so matching
+      // is simple.
+      return (item.sender == sender);
     } else {
-      return sender.endsWith(item.sender);
+      if ((Build.VERSION.SDK_INT >= 31) &&
+          ((Build.VERSION.SDK_INT < 33) ||
+           context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS))) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String countryCode = tm.getNetworkCountryIso();
+        if ((countryCode != null) && (!countryCode.equals(""))) {
+          return PhoneNumberUtils.areSamePhoneNumber(item.sender, sender, countryCode);
+        }
+      }
     }
+
+    // Fallback - just match the last 7 digits.
+    return PhoneNumberUtils.compare(item.sender, sender);
   }
 
   public static ListItem getMatch(ArrayList<ListItem> listItems,
-                                  String sender) {
+                                  String sender, Context context) {
     for (ListItem item : listItems) {
-      if (senderMatches(item, sender)) {
+      if (senderMatches(item, sender, context)) {
         return item;
       }
     }
@@ -92,10 +109,10 @@ public final class ListItem {
   }
 
   public static ListItem getMatch(ArrayList<ListItem> listItems,
-                                  String sender, String message) {
+                                  String sender, String message, Context context) {
     for (ListItem item : listItems) {
       if (!item.getIgnoreRequests() &&
-          senderMatches(item, sender) &&
+          senderMatches(item, sender, context) &&
           message.startsWith(item.messagePrefix)) {
         return item;
       }

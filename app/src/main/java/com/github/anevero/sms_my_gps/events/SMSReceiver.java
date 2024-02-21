@@ -35,7 +35,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
       String sender = message.getOriginatingAddress().trim();
       String body = message.getMessageBody().trim();
-      ListItem item = ListItem.getMatch(listItems, sender, body);
+      ListItem item = ListItem.getMatch(listItems, sender, body, context);
 
       if (item == null) {
         continue;

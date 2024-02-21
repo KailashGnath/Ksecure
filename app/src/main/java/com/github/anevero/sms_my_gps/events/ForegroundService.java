@@ -60,7 +60,7 @@ public class ForegroundService extends Service {
     }
 
     PendingIntent pendingIntent = PendingIntent.getActivity(
-            this, 0, new Intent(this, MainActivity.class), 0);
+            this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
 
     Notification notification = new NotificationCompat.Builder(
             this, Constants.NOTIFICATION_CHANNEL_ID)

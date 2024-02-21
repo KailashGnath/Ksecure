@@ -1,20 +1,26 @@
 package com.github.anevero.sms_my_gps.activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -25,6 +31,8 @@ import com.github.anevero.sms_my_gps.data.Preferences;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
+
+import static android.telephony.PhoneNumberUtils.formatNumberToE164;
 
 public class EditItemActivity extends AppCompatActivity {
   private EditText senderNameInput;
@@ -111,31 +119,89 @@ public class EditItemActivity extends AppCompatActivity {
     });
 
     saveButton.setOnClickListener(v -> {
-      if (senderNumInput.getText().toString().isEmpty() ||
-          prefixInput.getText().toString().isEmpty()) {
-        if (senderNumInput.getText().toString().isEmpty()) {
-          senderInputLayout.setError(getString(R.string.field_empty_label));
-        }
-        if (prefixInput.getText().toString().isEmpty()) {
-          prefixInputLayout.setError(getString(R.string.field_empty_label));
-        }
+      if (senderNumInput.getText().toString().isEmpty()) {
+        senderInputLayout.setError(getString(R.string.field_empty_label));
         return;
       }
-
-      Intent result = new Intent(this, MainActivity.class);
-      result.putExtra(Constants.ITEM_ID_KEY, getIntent().getIntExtra(
-              Constants.ITEM_ID_KEY, -1));
-      result.putExtra(Constants.SENDER_NAME_KEY,
-                      senderNameInput.getText().toString().trim());
-      result.putExtra(Constants.SENDER_NUM_KEY,
-                      senderNumInput.getText().toString().trim());
-      result.putExtra(Constants.MESSAGE_KEY,
-                      prefixInput.getText().toString().trim());
-      result.putExtra(Constants.IGNORE_KEY,
-                      ignoreCheckBox.isChecked());
-      setResult(Constants.EDIT_ITEM_ADD_RESULT_CODE, result);
-      finish();
+      if (prefixInput.getText().toString().isEmpty()) {
+        prefixInputLayout.setError(getString(R.string.field_empty_label));
+        return;
+      }
+      if (senderNumInput.getText().charAt(0) != '+') {
+        warnNumberIsntInternational();
+        return;
+      }
+      successCompletion();
     });
+  }
+
+  // Return true if the content is to be accepted, possibly with the
+  // recommended replacement, else false if the user should be taken
+  // back to the form.
+  private void warnNumberIsntInternational() {
+    Context context = EditItemActivity.this;
+
+    // In case the warning is dismissed
+    senderInputLayout.setError(getString(R.string.number_not_international));
+
+    // Attempt to calculate an internationalised number
+    String internationalised_number;
+    if ((Build.VERSION.SDK_INT >= 31) &&
+        ((Build.VERSION.SDK_INT < 33) ||
+         context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS))) {
+      TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+      String countryCode = tm.getNetworkCountryIso();
+      if ((countryCode != null) && (!countryCode.equals(""))) {
+        internationalised_number = formatNumberToE164 (senderNumInput.getText().toString(), countryCode.toUpperCase());
+      } else {
+        internationalised_number = null;
+      }
+    } else {
+      internationalised_number = null;
+    }
+
+    // Offer to replace with found internationalisation
+    final boolean[] accepted = {false};
+    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+    String message = getString(R.string.encourage_e164_number);
+    if (internationalised_number != null) {
+      message += "\n\n" + getString(R.string.replace_local_number, internationalised_number);
+      dialogBuilder.setPositiveButton(
+          R.string.replace_button_text,
+              (dialog, id) -> {
+                senderNumInput.setText(internationalised_number, TextView.BufferType.EDITABLE);
+                successCompletion();
+                dialog.dismiss();
+              });
+    }
+    dialogBuilder.setMessage(message);
+    dialogBuilder.setNeutralButton(
+        R.string.edit_button_text,
+            (dialog, id) -> dialog.dismiss());
+    dialogBuilder.setNegativeButton(
+        R.string.accept_button_text,
+            (dialog, id) -> {
+              successCompletion();
+              dialog.dismiss();
+            });
+    AlertDialog alertDialog = dialogBuilder.create();
+    alertDialog.show();
+  }
+
+  private void successCompletion() {
+    Intent result = new Intent(this, MainActivity.class);
+    result.putExtra(Constants.ITEM_ID_KEY, getIntent().getIntExtra(
+            Constants.ITEM_ID_KEY, -1));
+    result.putExtra(Constants.SENDER_NAME_KEY,
+                    senderNameInput.getText().toString().trim());
+    result.putExtra(Constants.SENDER_NUM_KEY,
+                    senderNumInput.getText().toString().trim());
+    result.putExtra(Constants.MESSAGE_KEY,
+                    prefixInput.getText().toString().trim());
+    result.putExtra(Constants.IGNORE_KEY,
+                    ignoreCheckBox.isChecked());
+    setResult(Constants.EDIT_ITEM_ADD_RESULT_CODE, result);
+    finish();
   }
 
   @Override

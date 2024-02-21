@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity
       boolean ignore = data.getBooleanExtra(Constants.IGNORE_KEY, false);
 
       if (itemId == -1) {
-        if (ListItem.getMatch(listItems, senderNum) != null) {
+        if (ListItem.getMatch(listItems, senderNum, this) != null) {
           Snackbar.make(findViewById(android.R.id.content),
                         R.string.item_already_added_warning,
                         Snackbar.LENGTH_LONG).show();

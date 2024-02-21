@@ -27,6 +27,14 @@
     <string name="cancel_button">Cancel</string>
     <string name="save_button">Save</string>
     <string name="field_empty_label">This field can\'t be empty</string>
+    <string name="number_not_international">This field must start with a country code (\"+xx\")</string>
+
+    <!-- warn on non-international numbers -->
+    <string name="encourage_e164_number">The number entered does not include a country code. A country code should be included to help match the numbers of incoming SMSs, especially when travelling internationally.</string>
+    <string name="replace_local_number">Would you like to replace the number with\n\t%1$s ?</string>
+    <string name="replace_button_text">Replace</string>
+    <string name="edit_button_text">Edit</string>
+    <string name="accept_button_text">Use Current</string>
 
     <string name="version_history_label"><a href="https://github.com/fredx100/sms_my_gps/releases">Version history</a></string>
     <string name="source_code_label"><a href="https://github.com/fredx100/sms_my_gps">Source code</a> (GPL 2.0 license)</string>
