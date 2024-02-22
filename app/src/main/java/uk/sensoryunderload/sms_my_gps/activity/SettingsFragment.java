@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.activity;
+package uk.sensoryunderload.sms_my_gps.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import androidx.preference.DropDownPreference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
-import com.github.anevero.sms_my_gps.R;
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements
         SharedPreferences.OnSharedPreferenceChangeListener {

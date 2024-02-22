@@ -5,5 +5,5 @@ project.ext {
     targetSdkVersion = 31
     compileSdkVersion = 33
     javaVersion = JavaVersion.VERSION_1_8
-    applicationId = 'com.github.anevero.sms_my_gps'
+    applicationId = 'uk.sensoryunderload.sms_my_gps'
 }

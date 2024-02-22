@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.events;
+package uk.sensoryunderload.sms_my_gps.events;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;

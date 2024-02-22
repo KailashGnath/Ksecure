@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.events;
+package uk.sensoryunderload.sms_my_gps.events;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 public class BootReceiver extends BroadcastReceiver {
   private final static String TAG = "BootReceiver";

@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.data;
+package uk.sensoryunderload.sms_my_gps.data;
 
 import java.util.ArrayList;
 

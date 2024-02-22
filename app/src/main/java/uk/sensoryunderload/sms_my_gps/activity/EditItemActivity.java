@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.activity;
+package uk.sensoryunderload.sms_my_gps.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,9 +24,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.github.anevero.sms_my_gps.R;
-import com.github.anevero.sms_my_gps.data.Constants;
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.data.Constants;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 import com.google.android.material.textfield.TextInputLayout;
 

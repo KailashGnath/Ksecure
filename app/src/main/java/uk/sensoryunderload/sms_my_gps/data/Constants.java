@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.data;
+package uk.sensoryunderload.sms_my_gps.data;
 
 public class Constants {
   // Keys in intents used to forward data between activities.

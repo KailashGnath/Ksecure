@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.events;
+package uk.sensoryunderload.sms_my_gps.events;
 
 import android.location.Location;
 import android.location.LocationManager;

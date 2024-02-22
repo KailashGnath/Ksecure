@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.activity;
+package uk.sensoryunderload.sms_my_gps.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,12 +17,12 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
-import com.github.anevero.sms_my_gps.R;
-import com.github.anevero.sms_my_gps.adapters.ListItemAdapter;
-import com.github.anevero.sms_my_gps.data.Constants;
-import com.github.anevero.sms_my_gps.data.ListItem;
-import com.github.anevero.sms_my_gps.data.Preferences;
-import com.github.anevero.sms_my_gps.events.ForegroundService;
+import uk.sensoryunderload.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.adapters.ListItemAdapter;
+import uk.sensoryunderload.sms_my_gps.data.Constants;
+import uk.sensoryunderload.sms_my_gps.data.ListItem;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.events.ForegroundService;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

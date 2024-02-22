@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.adapters;
+package uk.sensoryunderload.sms_my_gps.adapters;
 
 import java.util.ArrayList;
 
@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.github.anevero.sms_my_gps.R;
-import com.github.anevero.sms_my_gps.data.ListItem;
+import uk.sensoryunderload.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.data.ListItem;
 
 final public class ListItemAdapter extends ArrayAdapter<ListItem>
                                    implements View.OnClickListener {

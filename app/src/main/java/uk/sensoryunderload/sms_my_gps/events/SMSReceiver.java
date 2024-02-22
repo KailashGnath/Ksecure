@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.events;
+package uk.sensoryunderload.sms_my_gps.events;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import com.github.anevero.sms_my_gps.data.ListItem;
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.data.ListItem;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 import java.util.ArrayList;
 

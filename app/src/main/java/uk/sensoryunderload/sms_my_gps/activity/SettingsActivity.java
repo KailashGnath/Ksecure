@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.activity;
+package uk.sensoryunderload.sms_my_gps.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.github.anevero.sms_my_gps.R;
-import com.github.anevero.sms_my_gps.data.Preferences;
+import uk.sensoryunderload.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.data.Preferences;
 
 import java.util.Objects;
 

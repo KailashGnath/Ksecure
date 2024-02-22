@@ -47,7 +47,7 @@ android {
     lintOptions {
         abortOnError true
     }
-    namespace 'com.github.anevero.sms_my_gps'
+    namespace 'uk.sensoryunderload.sms_my_gps'
 }
 
 dependencies {

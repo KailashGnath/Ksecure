@@ -1,4 +1,4 @@
-package com.github.anevero.sms_my_gps.data;
+package uk.sensoryunderload.sms_my_gps.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.github.anevero.sms_my_gps.R;
+import uk.sensoryunderload.sms_my_gps.R;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
