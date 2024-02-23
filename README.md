@@ -9,7 +9,7 @@ To set this up simple add the permitted numbers with the corrosponding
 pre-agreed prefix to the app. The app will then send an SMS containing
 your coordinates in response to an appropriate SMS message.
 
-<img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_1.png" alt="Main screen" title="Main screen" width="25%" />&nbsp<img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_2.png" alt="Edit screen" title="Edit screen" width="25%" />&nbsp<img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_3.png" alt="Preferences screen" title="Preferences screen" width="25%" />&nbsp<img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_4.png" alt="Help screen" title="Help screen" width="25%" />
+<img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_1.png" alt="Main screen" title="Main screen" width="23%" /> <img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_2.png" alt="Edit screen" title="Edit screen" width="23%" /> <img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_3.png" alt="Preferences screen" title="Preferences screen" width="23%" /> <img src="app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_4.png" alt="Help screen" title="Help screen" width="23%" />
 
 This fork is based on [Anevero's
 project](https://github.com/anevero/sms_my_gps) which is, in turn, based
