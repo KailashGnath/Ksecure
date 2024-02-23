@@ -45,12 +45,6 @@ public final class Preferences {
     editor.putString(context.getString(R.string.app_theme),
                      context.getString(R.string.app_theme_system));
 
-    if (areGooglePlayServicesAvailable(context)) {
-      editor.putBoolean(context.getString(R.string.fused_enabled), true);
-    } else {
-      editor.putBoolean(context.getString(R.string.system_gps_enabled), true);
-    }
-
     editor.apply();
   }
 

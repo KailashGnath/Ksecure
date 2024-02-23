@@ -61,110 +61,140 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/how_to_label"
+            android:id="@+id/how_to_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/how_to_label"
+            android:text="@string/how_to_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/how_to_faq_label"
+            android:id="@+id/how_to_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/how_to_faq_label" />
+            android:text="@string/how_to_faq_answer" />
 
         <TextView
-            android:id="@+id/background_working_label"
+            android:id="@+id/not_working_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/background_working_label"
+            android:text="@string/not_working_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/background_working_faq_label"
+            android:id="@+id/not_working_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/background_working_faq_label" />
+            android:text="@string/not_working_faq_answer" />
 
         <TextView
-            android:id="@+id/last_known_location_not_sent_label"
+            android:id="@+id/rcs_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/last_known_location_not_sent_label"
+            android:text="@string/rcs_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/last_known_location_not_sent_faq_label"
+            android:id="@+id/rcs_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/last_known_location_not_sent_faq_label" />
+            android:text="@string/rcs_faq_answer" />
 
         <TextView
-            android:id="@+id/location_permission_label"
+            android:id="@+id/background_working_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/location_permission_label"
+            android:text="@string/background_working_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/location_permission_faq_label"
+            android:id="@+id/background_working_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/location_permission_faq_label" />
+            android:text="@string/background_working_faq_answer" />
 
         <TextView
-            android:id="@+id/sms_permission_label"
+            android:id="@+id/last_known_location_not_sent_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/sms_permission_label"
+            android:text="@string/last_known_location_not_sent_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/sms_permission_faq_label"
+            android:id="@+id/last_known_location_not_sent_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sms_permission_faq_label" />
+            android:text="@string/last_known_location_not_sent_faq_answer" />
 
         <TextView
-            android:id="@+id/contacts_permission_label"
+            android:id="@+id/location_permission_faq_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="@string/contacts_permission_label"
+            android:text="@string/location_permission_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/contacts_permission_faq_label"
+            android:id="@+id/location_permission_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contacts_permission_faq_label" />
+            android:text="@string/location_permission_faq_answer" />
 
         <TextView
-            android:id="@+id/privacy_policy_label"
+            android:id="@+id/sms_permission_faq_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/sms_permission_faq_question"
+            android:textColor="@color/header_text_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sms_permission_faq_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sms_permission_faq_answer" />
+
+        <TextView
+            android:id="@+id/contacts_permission_faq_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/contacts_permission_faq_question"
+            android:textColor="@color/header_text_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contacts_permission_faq_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts_permission_faq_answer" />
+
+        <TextView
+            android:id="@+id/privacy_policy_faq_question"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
-            android:text="@string/privacy_policy_label"
+            android:text="@string/privacy_policy_faq_question"
             android:textColor="@color/header_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/privacy_policy_faq_label"
+            android:id="@+id/privacy_policy_faq_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/privacy_policy_faq_label" />
+            android:text="@string/privacy_policy_faq_answer" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

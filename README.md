@@ -9,7 +9,7 @@ To set this up simple add the permitted numbers with the corrosponding
 pre-agreed prefix to the app. The app will then send an SMS containing
 your coordinates in response to an appropriate SMS message.
 
-![SMS my GPS](https://user-images.githubusercontent.com/47552815/97208941-c3c27380-17cc-11eb-8185-6e24a9dc7643.png)
+![The main screen](app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_1.png) ![Editing a contact](app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_2.png) ![Preferences](app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_3.png) ![Help](app/src/main/play/listings/en-GB/graphics/phone-screenshots/screenshot_4.png)
 
 This fork is based on [Anevero's
 project](https://github.com/anevero/sms_my_gps) which is, in turn, based

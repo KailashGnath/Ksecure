@@ -5,12 +5,12 @@
     <string name="service_enabled">service_enabled</string>
     <string name="list_items">list_items</string>
 
-    <string name="fused_enabled">fused_enabled</string>
-    <string name="fused_last_known_enabled">fused_last_known_enabled</string>
     <string name="system_gps_enabled">system_gps_enabled</string>
     <string name="system_gps_last_known_enabled">system_gps_last_known_enabled</string>
     <string name="system_network_enabled">system_network_enabled</string>
     <string name="system_network_last_known_enabled">system_network_last_known_enabled</string>
+    <string name="fused_enabled">fused_enabled</string>
+    <string name="fused_last_known_enabled">fused_last_known_enabled</string>
 
     <string name="location_accuracy">location_accuracy</string>
     <string name="attempts_number">attempts_number</string>

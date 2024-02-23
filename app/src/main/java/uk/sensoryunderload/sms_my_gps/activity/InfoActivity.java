@@ -38,7 +38,7 @@ public class InfoActivity extends AppCompatActivity {
     basedOnLabel = findViewById(R.id.based_on_label);
     basedOnLabel.setMovementMethod(LinkMovementMethod.getInstance());
 
-    privacyPolicyLabel = findViewById(R.id.privacy_policy_faq_label);
+    privacyPolicyLabel = findViewById(R.id.privacy_policy_faq_answer);
     privacyPolicyLabel.setMovementMethod(LinkMovementMethod.getInstance());
   }
 
