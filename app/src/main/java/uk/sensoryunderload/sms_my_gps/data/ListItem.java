@@ -80,7 +80,7 @@ public final class ListItem {
     if (item.sender.charAt(0) == '+') {
       // item.sender already has a country code prepended, so matching
       // is simple.
-      return (item.sender == sender);
+      return (item.sender.equals(sender));
     } else {
       if ((Build.VERSION.SDK_INT >= 31) &&
           ((Build.VERSION.SDK_INT < 33) ||
