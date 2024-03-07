@@ -45,7 +45,7 @@ jobs:
 
     - name: Build
       run: ./gradlew assembleRelease --parallel --build-cache
-    
+
     - name: Upload APK
       uses: actions/upload-artifact@v2
       with:
