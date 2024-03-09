@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SMS my GPS</string>
-    <string name="app_version">Версія 3.4.8 (37)</string>
+    <string name="app_version">Версія 3.5.0 (38)</string>
 
     <string name="add_item">Дадаць запіс</string>
     <string name="edit_item">Рэдагаваць запіс</string>
@@ -11,41 +11,53 @@
     <string name="enable_service_switch">Уключыць сэрвіс</string>
     <string name="service_running">Сервіс запушчаны</string>
     <string name="service_channel">Канал сэрвісу</string>
-    <!-- <string name="ignore_request_icon">Ignore Location Requests from this number</string>
-    <string name="location_request">Sent a location request to </string> -->
+    <!-- <string name="location_request">Sent a location request to </string> -->
 
-    <string name="item_already_added_warning">Гэты нумар ужо ёсць у спісе!</string>
-    <!-- <string name="number_missing">Your contacts provider didn\'t return a number. Either use a different contacts provider or manually enter the contact\'s details.</string> -->
-
+    <!-- Edit/New contact form -->
     <string name="sender_name_label">Імя адпраўніка:</string>
     <string name="sender_num_label">Нумар адпраўніка:</string>
     <string name="pick_contact_button">Выбраць кантакт…</string>
     <string name="prefix_label">Прэфікс паведамлення адпраўніка:</string>
-    <!-- <string name="dissable_requests_label">Dissable GPS requests from sender</string>
-    <string name="location_request_label">Send request for location</string> -->
+    <!-- <string name="ignore_request_label">Ignore location requests from this number</string> -->
+    <!-- <string name="location_request_label">Send request for location</string> -->
     <string name="delete_button">Выдаліць</string>
     <string name="cancel_button">Зачыніць</string>
     <string name="save_button">Захаваць</string>
     <string name="field_empty_label">Гэта поле не можа быць пустым</string>
+    <!-- <string name="number_not_international">This field must start with a country code (\"+xx\")</string> -->
+    <string name="item_already_added_warning">Гэты нумар ужо ёсць у спісе!</string>
+    <!-- <string name="number_missing">Your contacts provider didn\'t return a number. Either use a different contacts provider or manually enter the contact\'s details.</string> -->
 
+    <!-- warn on non-international numbers -->
+    <!-- <string name="encourage_e164_number">The number entered does not include a country code. A country code should be included to help match the numbers of incoming SMSs, especially when travelling internationally.</string> -->
+    <!-- <string name="replace_local_number">Would you like to replace the number with\n\t%1$s ?</string> -->
+    <!-- <string name="replace_button_text">Replace</string> -->
+    <!-- <string name="edit_button_text">Edit</string> -->
+    <!-- <string name="accept_button_text">Use Current</string> -->
+
+    <!-- FAQ -->
     <string name="version_history_label"><a href="https://github.com/fredx100/sms_my_gps/releases">Гісторыя версій</a></string>
     <string name="source_code_label"><a href="https://github.com/fredx100/sms_my_gps">Зыходны код</a> (ліцэнзія GPL 2.0)</string>
     <string name="based_on_label">На аснове <a href="https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS">праекта Уорэна Бэнка</a></string>
     <string name="faq_label">Частыя пытанні</string>
-    <string name="how_to_label">Як працаваць з гэтым прыкладаннем?</string>
-    <string name="how_to_faq_label">Проста дадайце нумар і паведамленне, на якое прыкладанне павінна адказаць. Калі ваш тэлефон атрымае гэтае паведамленне з гэтага нумара, прыкладанне адправіць месцазнаходжанне ў адказ на яго.</string>
-    <string name="background_working_label">Чаму прыкладанне не працуе ў фоне?</string>
-    <string name="background_working_faq_label">З прычыны абмежаванняў Android мы не можам гарантаваць, што прыкладанне зможа заўсёды працаваць у фоне. Пераканайцеся, што яму дазволена працаваць у фонавым рэжыме (Налады - Прыкладанні). Адключыце рэжым эканоміі зараду.</string>
-    <string name="last_known_location_not_sent_label">Чаму прыкладанне не адпраўляе апошняе вядомае месцазнаходжанне?</string>
-    <string name="last_known_location_not_sent_faq_label">Прыкладанне можа адправіць апошняе вядомае месцазнаходжанне, толькі калі сістэма можа яго прадаставіць. Калі прыкладанне не зможа атрымаць ад Android апошняе вядомае месцазнаходжанне (напрыклад, таму што GPS быў доўга адключаны), яно яго не адправіць.</string>
-    <string name="location_permission_label">Як прыкладанне выкарыстоўвае дазвол на доступ да месцазнаходжання?</string>
-    <string name="location_permission_faq_label">Прыкладанне выкарыстоўвае яго, каб атрымаць месцазнаходжанне пасля атрымання адпаведнага ўваходнага SMS.</string>
-    <string name="sms_permission_label">Як прыкладанне выкарыстоўвае дазвол на доступ да SMS?</string>
-    <string name="sms_permission_faq_label">Прыкладанне чытае ўсе ўваходныя SMS, каб праверыць, ці трэба адпраўляць месцазнаходжанне ў адказ. Яно не захоўвае і не апрацоўвае вашыя SMS-паведамленні ніякім іншым чынам.</string>
-    <string name="contacts_permission_label">Як прыкладанне выкарыстоўвае дазвол на доступ да кантактаў?</string>
-    <string name="contacts_permission_faq_label">Гэты дазвол неабавязковы. Вы можаце прадаставіць яго, каб мець магчымасць выбраць кантакт пры стварэнні новага элемента. Калі вы не прадаставіце яго, вы ўсё роўна зможаце ўвесці нумар самастойна.</string>
-    <string name="privacy_policy_label">Палітыка прыватнасці</string>
-    <string name="privacy_policy_faq_label">Прыкладанне не збірае ніякіх дадзеных. Для запытаў месцазнаходжання выкарыстоўваюцца службы месцазнаходжання Google. Іх выкарыстанне рэгулюецца <a href="https://policies.google.com/technologies/location-data">Палітыкай прыватнасці Google</a>.</string>
+    <string name="how_to_faq_question">Як працаваць з гэтым прыкладаннем?</string>
+    <string name="how_to_faq_answer">Проста дадайце нумар і паведамленне, на якое прыкладанне павінна адказаць. Калі ваш тэлефон атрымае гэтае паведамленне з гэтага нумара, прыкладанне адправіць месцазнаходжанне ў адказ на яго.</string>
+    <!-- <string name="not_working_faq_question">The app isn\'t sending out my location after receiving a correct message. What\'s happenning?</string> -->
+    <!-- <string name="not_working_faq_answer">Firstly, double check that the number and the message prefix in the app match the message. Possibly check this again. If you\'re sure they match, it may be that you received an RCS message, rather than an SMS. Sadly, SMS my GPS doesn\'t currently respond to RCS messages. Read the FAQ question regarding RCS messages, below, for a workaround.</string> -->
+    <!-- <string name="rcs_faq_question">How can I send SMSs if my phone uses RCS messaging?</string> -->
+    <!-- <string name="rcs_faq_answer">Many modern phones use the RCS messaging standard to send messages. These messages don\'t trigger SMS my GPS\'s response. To help with this, it is possible to send an SMS location requestion from within the app: from the main screen press the button with target\-like icon to send an SMS to the number indicated, with the message saved for that number.\n\nIf your contact needs to send you an SMS location\-request but can\'t, they will need to download this app, also. Then they can use the target button to send you an SMS after adding your details to their app.</string> -->
+    <string name="background_working_faq_question">Чаму прыкладанне не працуе ў фоне?</string>
+    <string name="background_working_faq_answer">З прычыны абмежаванняў Android мы не можам гарантаваць, што прыкладанне зможа заўсёды працаваць у фоне. Пераканайцеся, што яму дазволена працаваць у фонавым рэжыме (Налады - Прыкладанні). Адключыце рэжым эканоміі зараду.</string>
+    <string name="last_known_location_not_sent_faq_question">Чаму прыкладанне не адпраўляе апошняе вядомае месцазнаходжанне?</string>
+    <string name="last_known_location_not_sent_faq_answer">Прыкладанне можа адправіць апошняе вядомае месцазнаходжанне, толькі калі сістэма можа яго прадаставіць. Калі прыкладанне не зможа атрымаць ад Android апошняе вядомае месцазнаходжанне (напрыклад, таму што GPS быў доўга адключаны), яно яго не адправіць.</string>
+    <string name="location_permission_faq_question">Як прыкладанне выкарыстоўвае дазвол на доступ да месцазнаходжання?</string>
+    <string name="location_permission_faq_answer">Прыкладанне выкарыстоўвае яго, каб атрымаць месцазнаходжанне пасля атрымання адпаведнага ўваходнага SMS.</string>
+    <string name="sms_permission_faq_question">Як прыкладанне выкарыстоўвае дазвол на доступ да SMS?</string>
+    <string name="sms_permission_faq_answer">Прыкладанне чытае ўсе ўваходныя SMS, каб праверыць, ці трэба адпраўляць месцазнаходжанне ў адказ. Яно не захоўвае і не апрацоўвае вашыя SMS-паведамленні ніякім іншым чынам.</string>
+    <string name="contacts_permission_faq_question">Як прыкладанне выкарыстоўвае дазвол на доступ да кантактаў?</string>
+    <string name="contacts_permission_faq_answer">Гэты дазвол неабавязковы. Вы можаце прадаставіць яго, каб мець магчымасць выбраць кантакт пры стварэнні новага элемента. Калі вы не прадаставіце яго, вы ўсё роўна зможаце ўвесці нумар самастойна.</string>
+    <string name="privacy_policy_faq_question">Палітыка прыватнасці</string>
+    <string name="privacy_policy_faq_answer">Прыкладанне не збірае ніякіх дадзеных. Для запытаў месцазнаходжання выкарыстоўваюцца службы месцазнаходжання Google. Іх выкарыстанне рэгулюецца <a href="https://policies.google.com/technologies/location-data">Палітыкай прыватнасці Google</a>.</string>
     <string name="back_button">Назад</string>
 
     <string name="location_providers_label">Крыніцы дадзеных аб месцазнаходжанні</string>

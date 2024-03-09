@@ -35,6 +35,7 @@
     <string name="edit_button_text">Edit</string>
     <string name="accept_button_text">Use Current</string>
 
+    <!-- FAQ -->
     <string name="version_history_label"><a href="https://github.com/fredx100/sms_my_gps/releases">Version history</a></string>
     <string name="source_code_label"><a href="https://github.com/fredx100/sms_my_gps">Source code</a> (GPL 2.0 license)</string>
     <string name="based_on_label">Based on <a href="https://github.com/anevero/sms_my_gps">Anevero\'s project</a> (which is based on <a href="https://github.com/warren-bank/Android-SMS-Automatic-Reply-GPS">Warren Bank\'s project</a>)</string>
