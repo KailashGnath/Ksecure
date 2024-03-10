@@ -1,6 +1,6 @@
 # SMS my GPS
 
-[![GitHub Actions Status](https://github.com/fredx100/sms_my_gps/workflows/build/badge.svg?branch=master)](https://github.com/fredx100/sms_my_gps/actions)
+[![GitHub Actions Status](https://github.com/fredx100/sms_my_gps/workflows/build/badge.svg)](https://github.com/fredx100/sms_my_gps/actions)
 
 This android app is designed to automatically send your location in
 response to an SMS from a permitted phone number with a pre-agreed prefix.
