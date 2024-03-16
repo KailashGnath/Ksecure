@@ -18,7 +18,6 @@ import java.util.Objects;
 public final class Preferences {
   private final static String DEFAULT_LOCATION_ACCURACY = "20";
   private final static String DEFAULT_ATTEMPTS_NUMBER = "20";
-  private final static String PREFS_NAME = "data";
 
   public static boolean areGooglePlayServicesAvailable(Context context) {
     GoogleApiAvailability instance = GoogleApiAvailability.getInstance();
@@ -28,7 +27,7 @@ public final class Preferences {
 
   public static void initPreferences(Context context) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     if (preferences.contains(
             context.getString(R.string.preferences_initialized))) {
       return;
@@ -46,18 +45,18 @@ public final class Preferences {
     editor.putString(context.getString(R.string.app_theme),
                      context.getString(R.string.app_theme_system));
 
-    editor.apply();
+    editor.commit();
   }
 
   private static boolean isOptionEnabled(Context context, int option) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     return preferences.getBoolean(context.getString(option), false);
   }
 
   public static ArrayList<ListItem> getListItems(Context context) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     String json = preferences.getString(
             context.getString(R.string.list_items), null);
     try {
@@ -71,7 +70,7 @@ public final class Preferences {
                                   ArrayList<ListItem> listItems) {
     String json = ListItem.toJson(listItems);
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     SharedPreferences.Editor editor = preferences.edit();
     editor.putString(context.getString(R.string.list_items), json);
     editor.apply();
@@ -83,7 +82,7 @@ public final class Preferences {
 
   public static void setServiceEnabled(Context context, boolean enabled) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     SharedPreferences.Editor editor = preferences.edit();
     editor.putBoolean(context.getString(R.string.service_enabled), enabled);
     editor.apply();
@@ -114,7 +113,7 @@ public final class Preferences {
 
   public static int getLocationAccuracy(Context context) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     return Integer.parseInt(Objects.requireNonNull(preferences.getString(
             context.getString(R.string.location_accuracy),
             DEFAULT_LOCATION_ACCURACY)));
@@ -122,7 +121,7 @@ public final class Preferences {
 
   public static int getAttemptsNumber(Context context) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     return Integer.parseInt(Objects.requireNonNull(preferences.getString(
             context.getString(R.string.attempts_number),
             DEFAULT_ATTEMPTS_NUMBER)));
@@ -134,7 +133,7 @@ public final class Preferences {
 
   public static int getTheme(Context context) {
     SharedPreferences preferences =
-            context.getSharedPreferences(PREFS_NAME, 0);
+            PreferenceManager.getDefaultSharedPreferences(context);
     String mode = preferences.getString(
             context.getString(R.string.app_theme),
             context.getString(R.string.app_theme_system));
