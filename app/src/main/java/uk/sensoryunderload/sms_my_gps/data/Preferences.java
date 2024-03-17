@@ -45,7 +45,7 @@ public final class Preferences {
     editor.putString(context.getString(R.string.app_theme),
                      context.getString(R.string.app_theme_system));
 
-    editor.commit();
+    editor.apply();
   }
 
   private static boolean isOptionEnabled(Context context, int option) {
