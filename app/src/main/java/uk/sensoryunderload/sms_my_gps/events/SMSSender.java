@@ -12,15 +12,13 @@ import java.util.Locale;
 public class SMSSender {
   private final String recipient;
   private final Location location;
-  private final boolean lastKnownLocation;
-  private final String systemProvider;
+  private final String descriptionString;
 
-  public SMSSender(String recipient, @NonNull Location location,
-                   boolean lastKnownLocation, String systemProvider) {
+  public SMSSender(String recipient, Location location,
+                   String descriptionString) {
     this.recipient = recipient;
-    this.lastKnownLocation = lastKnownLocation;
     this.location = location;
-    this.systemProvider = systemProvider;
+    this.descriptionString = descriptionString;
   }
 
   public void sendMessage() {
@@ -32,35 +30,24 @@ public class SMSSender {
   }
 
   private String generateBasicMessage() {
-    double lat = location.getLatitude();
-    double lon = location.getLongitude();
-    float accuracy = location.getAccuracy();
-    float speed = location.getSpeed();
+    if (location != null) {
+      double lat = location.getLatitude();
+      double lon = location.getLongitude();
+      float accuracy = location.getAccuracy();
+      float speed = location.getSpeed();
 
-    String providerName;
-    if (systemProvider == null) {
-      providerName = "";
-    } else if (systemProvider.equals(LocationManager.GPS_PROVIDER)) {
-      providerName = ", GPS";
-    } else if (systemProvider.equals(LocationManager.NETWORK_PROVIDER)) {
-      providerName = ", network";
+      return String.format(
+              "%1$s:\n" +
+              "https://www.google.com/maps/search/?api=1&query=%2$s,%3$s\n" +
+              "Accuracy: %4$s m\n" +
+              "Speed: %5$s km/h",
+              descriptionString,
+              String.format(Locale.US, "%.6f", lat),
+              String.format(Locale.US, "%.6f", lon),
+              Math.round(accuracy),
+              Math.round(3.6 * speed));
     } else {
-      //  Impossible.
-      providerName = ", unknown";
+      return descriptionString;
     }
-
-    String locationType = ((lastKnownLocation) ? "Last known" : "Current") +
-                          providerName;
-
-    return String.format(
-            "%1$s:\n" +
-            "https://www.google.com/maps/search/?api=1&query=%2$s,%3$s\n" +
-            "Accuracy: %4$s m\n" +
-            "Speed: %5$s km/h",
-            locationType,
-            String.format(Locale.US, "%.6f", lat),
-            String.format(Locale.US, "%.6f", lon),
-            Math.round(accuracy),
-            Math.round(3.6 * speed));
   }
 }
