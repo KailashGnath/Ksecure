@@ -1,15 +1,10 @@
 apply plugin: 'com.android.application'
 
 apply from: '../constants.gradle'
-apply from: '../signing_config.gradle'
 
 android {
     signingConfigs {
         release {
-            storeFile file('../signing_key.jks')
-            storePassword project.ext.storePassword
-            keyAlias project.ext.keyAlias
-            keyPassword project.ext.keyPassword
         }
     }
 

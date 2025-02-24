@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SMS my GPS</string>
+    <string name="app_name">KSecure</string>
     <string name="app_version">Version 3.6.0 (40)</string>
 
     <string name="add_item">Add item</string>
@@ -43,9 +43,9 @@
     <string name="how_to_faq_question">How to use this app?</string>
     <string name="how_to_faq_answer">Just add a number and a message to which the app should reply. When your phone gets an SMS message from this number the app will send the phone\'s location in reply.</string>
     <string name="not_working_faq_question">The app isn\'t sending out my location after receiving a correct message. What\'s happenning?</string>
-    <string name="not_working_faq_answer">Firstly, double check that the number and the message prefix in the app match the message. Possibly check this again. If you\'re sure they match, it may be that you received an RCS message, rather than an SMS. Sadly, SMS my GPS doesn\'t currently respond to RCS messages. Read the FAQ question regarding RCS messages, below, for a workaround.</string>
+    <string name="not_working_faq_answer">Firstly, double check that the number and the message prefix in the app match the message. Possibly check this again. If you\'re sure they match, it may be that you received an RCS message, rather than an SMS. Sadly, KSecure doesn\'t currently respond to RCS messages. Read the FAQ question regarding RCS messages, below, for a workaround.</string>
     <string name="rcs_faq_question">How can I send SMSs if my phone uses RCS messaging?</string>
-    <string name="rcs_faq_answer">Many modern phones use the RCS messaging standard to send messages. These messages don\'t trigger SMS my GPS\'s response. To help with this, it is possible to send an SMS location requestion from within the app: from the main screen press the button with target\-like icon to send an SMS to the number indicated, with the message saved for that number.\n\nIf your contact needs to send you an SMS location\-request but can\'t, they will need to download this app, also. Then they can use the target button to send you an SMS after adding your details to their app.</string>
+    <string name="rcs_faq_answer">Many modern phones use the RCS messaging standard to send messages. These messages don\'t trigger KSecure\'s response. To help with this, it is possible to send an SMS location requestion from within the app: from the main screen press the button with target\-like icon to send an SMS to the number indicated, with the message saved for that number.\n\nIf your contact needs to send you an SMS location\-request but can\'t, they will need to download this app, also. Then they can use the target button to send you an SMS after adding your details to their app.</string>
     <string name="background_working_faq_question">Why does this app not work in the background?</string>
     <string name="background_working_faq_answer">Due to Android restrictions, we can\'t guarantee that app will be able to always work in background. Ensure that this app is allowed to run in background (Settings - Apps). Disable battery saver mode.</string>
     <string name="last_known_location_not_sent_faq_question">Why does this app not send the last known location?</string>

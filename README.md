@@ -1,4 +1,4 @@
-# SMS my GPS
+# KSecure
 
 [![GitHub Actions Status](https://github.com/fredx100/sms_my_gps/workflows/build/badge.svg)](https://github.com/fredx100/sms_my_gps/actions)
 
